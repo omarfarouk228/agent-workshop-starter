@@ -2,7 +2,7 @@
 
 Code du workshop **« Construire un agent IA qui agit vraiment »**, Lomé 2026.
 
-Un agent Python construit avec [Google ADK](https://google.github.io/adk-docs/) et Gemini, avec trois outils réels, puis exposé à Claude Desktop et Gemini CLI via un serveur [MCP](https://modelcontextprotocol.io).
+Un agent Python construit avec [Google ADK](https://google.github.io/adk-docs/) et Gemini, avec trois outils réels, puis exposé à Gemini CLI et Claude Code via un serveur [MCP](https://modelcontextprotocol.io).
 
 | Outil | Type | Source |
 |---|---|---|
@@ -51,32 +51,33 @@ Essayez : *« Note : réunion demain 10h sur l'agent IA. Et quelle météo à Lo
 mcp dev demo_mcp_server.py      # MCP Inspector (nécessite Node)
 ```
 
-Pour Claude Desktop, éditez `claude_desktop_config.json` :
+Les serveurs MCP sont **déjà déclarés dans le repo**, avec des chemins relatifs :
 
-- macOS : `~/Library/Application Support/Claude/claude_desktop_config.json`
-- Windows : `%APPDATA%\Claude\claude_desktop_config.json`
+- `.mcp.json` pour Claude Code
+- `.gemini/settings.json` pour Gemini CLI
 
-```json
-{
-  "mcpServers": {
-    "demo": {
-      "command": "/chemin/absolu/agent-workshop-starter/.venv/bin/python",
-      "args": ["/chemin/absolu/agent-workshop-starter/demo_mcp_server.py"]
-    }
-  }
-}
-```
+Ils déclarent `demo` (Python) et `demo-dart` (lancez `cd dart_mcp_server && dart pub get` une première fois). Windows : remplacez `.venv/bin/python` par `.venv\Scripts\python.exe`.
 
-Les chemins doivent être **absolus**, et `command` doit pointer vers le Python du venv. Redémarrez ensuite Claude Desktop.
-
-Pour Gemini CLI (`npm install -g @google/gemini-cli`) :
+### Gemini CLI (gratuit)
 
 ```bash
-gemini mcp add -s user demo /chemin/absolu/.venv/bin/python /chemin/absolu/demo_mcp_server.py
-gemini mcp list      # doit afficher : demo ... Connected
+npm install -g @google/gemini-cli
+gemini            # depuis la racine du repo
 ```
 
-`-s user` enregistre le serveur dans votre config globale. Sans cette option, Gemini CLI écrit dans le dossier courant et refuse si ce dossier n'est pas marqué comme sûr (« untrusted workspace »).
+Au premier lancement, **acceptez de faire confiance au dossier**. Dans un dossier non approuvé, Gemini CLI désactive tous les serveurs MCP. Tapez ensuite `/mcp` : `demo` et `demo-dart` doivent être connectés.
+
+### Claude Code (abonnement Claude requis)
+
+```bash
+claude            # depuis la racine du repo
+```
+
+Approuvez les serveurs de `.mcp.json` quand Claude Code le propose, puis vérifiez avec `/mcp`.
+
+### Claude Desktop (optionnel)
+
+Éditez `~/Library/Application Support/Claude/claude_desktop_config.json` (Windows : `%APPDATA%\Claude\claude_desktop_config.json`) avec le même bloc `mcpServers`, mais en chemins **absolus**, puis redémarrez Claude Desktop.
 
 ## Version Dart
 
@@ -90,6 +91,8 @@ assistant_agent/
   tools.py        # save_note, get_weather, search_web
   .env            # votre clé (non versionnée)
 demo_mcp_server.py  # les mêmes outils exposés en MCP
+.mcp.json           # serveurs MCP pour Claude Code
+.gemini/            # serveurs MCP pour Gemini CLI
 dart_mcp_server/    # les outils en Dart, exposés en MCP
 scripts/check_setup.py
 EXERCICES.md      # la pratique, avec solutions
@@ -104,10 +107,10 @@ Voir [EXERCICES.md](EXERCICES.md).
 | Symptôme | Solution |
 |---|---|
 | `mcp dev` : le serveur ne démarre pas | Lancez-le depuis la racine du repo, venv activé : il réutilise `.venv` |
-| Gemini CLI : `Cannot modify settings in an untrusted workspace` | Ajoutez `-s user` à `gemini mcp add` |
+| Gemini CLI : serveurs MCP « Disabled » | Le dossier n'est pas approuvé : relancez `gemini` depuis la racine du repo et acceptez de lui faire confiance |
 | macOS : `brew install node` compile pendant des heures | Votre macOS n'a plus de bottles Homebrew : installez le `.pkg` LTS de https://nodejs.org |
 | `adk web` ne trouve pas l'agent | Lancez-le depuis la racine du repo, pas depuis `assistant_agent/` |
 | `No module named 'mcp.server.fastmcp'` | mcp 2.x a renommé `FastMCP` en `MCPServer` : `from mcp.server.mcpserver import MCPServer` |
-| Claude Desktop ne voit pas « demo » | Chemins non absolus, mauvais Python ou Claude non redémarré. Logs : `~/Library/Logs/Claude/mcp*.log` |
+| Claude Code / Gemini CLI ne voient pas « demo » | Lancez-les depuis la racine du repo, venv créé dans `.venv` |
 | Gemini répond `429` | Quota gratuit atteint : attendez une minute ou utilisez une autre clé |
 | L'agent ne répond plus | Testez un autre modèle dans `agent.py` (`gemini-2.5-flash-lite`) |

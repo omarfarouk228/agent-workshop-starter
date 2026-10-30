@@ -142,13 +142,13 @@ for fn in (save_note, list_notes, get_weather, search_web):
 
 </details>
 
-### 3.3 Brancher Claude Desktop
+### 3.3 Brancher un vrai client
 
-Suivez la section « Serveur MCP » du [README](README.md). Puis demandez à Claude :
+Les serveurs sont déjà déclarés dans le repo (`.gemini/settings.json` et `.mcp.json`). Depuis la racine du repo, lancez **Gemini CLI** (`gemini`, gratuit) ou **Claude Code** (`claude`, abonnement requis), acceptez de faire confiance au dossier, puis tapez `/mcp`.
 
-*« Note : appel client demain à 14h. Et quelle météo à Lomé ? »*
+Demandez ensuite : *« Note : appel client demain à 14h. Et quelle météo à Lomé ? »*
 
-Ouvrez ensuite `notes.db` (ou demandez `list_notes` à votre agent ADK) : la note écrite par Claude est là. **Deux agents différents, la même base, le même code.**
+Ouvrez enfin `notes.db` (ou demandez `list_notes` à votre agent ADK) : la note écrite par Gemini CLI est là. **Deux agents différents, la même base, le même code.**
 
 ### 3.4 Bonus : un agent Python, des outils en Dart
 

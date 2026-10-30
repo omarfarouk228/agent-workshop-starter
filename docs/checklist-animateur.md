@@ -8,12 +8,12 @@
 ## J-1
 - [ ] Rappel envoyé aux participants
 - [ ] `python scripts/check_setup.py` tout vert sur la machine de démo
-- [ ] Lancer les 2 démos de bout en bout (agent + Claude Desktop)
+- [ ] Lancer les 2 démos de bout en bout (agent ADK, puis Gemini CLI et Claude Code)
 - [ ] Vérifier que `gemini-2.5-flash` répond rapidement, sinon basculer sur `gemini-2.5-flash-lite` dans `agent.py`
 - [ ] `notes.db` de démo vidé (`rm notes.db`) pour que la démo 1 affiche un ID propre
-- [ ] Gemini CLI : `gemini mcp add -s user demo ...` puis `gemini mcp list` affiche « Connected »
+- [ ] `gemini` puis `/mcp` depuis la racine du repo : `demo` et `demo-dart` connectés (dossier approuvé)
+- [ ] `claude` depuis la racine du repo : serveurs de `.mcp.json` approuvés, `/mcp` les montre connectés
 - [ ] `mcp dev demo_mcp_server.py` depuis la racine du repo : l'Inspector s'ouvre sur le port 6274
-- [ ] Claude Desktop configuré avec les chemins absolus de la machine de démo, et redémarré
 - [ ] Repo cloné sur une clé USB avec les wheels (`pip download -r requirements.txt -d wheels/`, une fois par OS) en cas de wifi saturé
 
 ## Jour J
@@ -28,8 +28,8 @@
 | Wifi saturé | `pip install --no-index --find-links wheels/ -r requirements.txt` depuis la clé USB |
 | Quota Gemini dépassé (429) | Chaque participant utilise **sa propre clé** ; sinon basculer sur `gemini-2.5-flash-lite` |
 | Pas de clé Google possible | Binôme avec un voisin |
-| Claude Desktop indisponible | Démo 2 avec `mcp dev` (MCP Inspector) ou Gemini CLI |
-| Pas de Node | Sauter l'Inspector, tester le MCP directement dans Claude Desktop |
+| Claude Code indisponible (réseau, quota) | Démo 2 avec Gemini CLI ou `mcp dev` (MCP Inspector) |
+| Pas de Node chez un participant | Binôme avec un voisin pour la partie Gemini CLI |
 
 ## Timing indicatif (2 h)
 | Bloc | Durée |

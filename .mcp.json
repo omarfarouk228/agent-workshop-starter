@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "demo": {
+      "command": ".venv/bin/python",
+      "args": ["demo_mcp_server.py"]
+    },
+    "demo-dart": {
+      "command": "dart",
+      "args": ["dart_mcp_server/bin/server.dart"]
+    }
+  }
+}
