@@ -69,11 +69,14 @@ Pour Claude Desktop, éditez `claude_desktop_config.json` :
 
 Les chemins doivent être **absolus**, et `command` doit pointer vers le Python du venv. Redémarrez ensuite Claude Desktop.
 
-Pour Gemini CLI :
+Pour Gemini CLI (`npm install -g @google/gemini-cli`) :
 
 ```bash
-gemini mcp add demo /chemin/absolu/.venv/bin/python /chemin/absolu/demo_mcp_server.py
+gemini mcp add -s user demo /chemin/absolu/.venv/bin/python /chemin/absolu/demo_mcp_server.py
+gemini mcp list      # doit afficher : demo ... Connected
 ```
+
+`-s user` enregistre le serveur dans votre config globale. Sans cette option, Gemini CLI écrit dans le dossier courant et refuse si ce dossier n'est pas marqué comme sûr (« untrusted workspace »).
 
 ## Version Dart
 
@@ -100,6 +103,9 @@ Voir [EXERCICES.md](EXERCICES.md).
 
 | Symptôme | Solution |
 |---|---|
+| `mcp dev` : le serveur ne démarre pas | Lancez-le depuis la racine du repo, venv activé : il réutilise `.venv` |
+| Gemini CLI : `Cannot modify settings in an untrusted workspace` | Ajoutez `-s user` à `gemini mcp add` |
+| macOS : `brew install node` compile pendant des heures | Votre macOS n'a plus de bottles Homebrew : installez le `.pkg` LTS de https://nodejs.org |
 | `adk web` ne trouve pas l'agent | Lancez-le depuis la racine du repo, pas depuis `assistant_agent/` |
 | `No module named 'mcp.server.fastmcp'` | mcp 2.x a renommé `FastMCP` en `MCPServer` : `from mcp.server.mcpserver import MCPServer` |
 | Claude Desktop ne voit pas « demo » | Chemins non absolus, mauvais Python ou Claude non redémarré. Logs : `~/Library/Logs/Claude/mcp*.log` |

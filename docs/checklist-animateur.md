@@ -11,6 +11,8 @@
 - [ ] Lancer les 2 démos de bout en bout (agent + Claude Desktop)
 - [ ] Vérifier que `gemini-2.5-flash` répond rapidement, sinon basculer sur `gemini-2.5-flash-lite` dans `agent.py`
 - [ ] `notes.db` de démo vidé (`rm notes.db`) pour que la démo 1 affiche un ID propre
+- [ ] Gemini CLI : `gemini mcp add -s user demo ...` puis `gemini mcp list` affiche « Connected »
+- [ ] `mcp dev demo_mcp_server.py` depuis la racine du repo : l'Inspector s'ouvre sur le port 6274
 - [ ] Claude Desktop configuré avec les chemins absolus de la machine de démo, et redémarré
 - [ ] Repo cloné sur une clé USB avec les wheels (`pip download -r requirements.txt -d wheels/`, une fois par OS) en cas de wifi saturé
 

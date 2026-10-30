@@ -13,7 +13,8 @@ Pour qu'on passe nos 2 heures à coder plutôt qu'à installer, merci de prépar
 **1. Installer les outils**
 - Python 3.11 ou plus récent : https://www.python.org/downloads/
 - Git : https://git-scm.com/downloads
-- Node 20 ou plus récent (recommandé pour la partie MCP) : https://nodejs.org
+- Node 20 ou plus récent (recommandé pour la partie MCP) : prenez le paquet LTS sur https://nodejs.org
+- Gemini CLI (optionnel) : `npm install -g @google/gemini-cli`
 - Claude Desktop (optionnel, pour la démo MCP) : https://claude.ai/download
 
 **2. Récupérer le code**
