@@ -1,0 +1,12 @@
+name: dart_mcp_server
+description: Serveur MCP en Dart exposant les outils du workshop Agent IA.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  dart_mcp: ^0.5.2
+  http: ^1.4.0
+  sqlite3: ^3.0.0
