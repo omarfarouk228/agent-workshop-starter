@@ -1,4 +1,7 @@
 {
+  "model": {
+    "name": "gemini-3.5-flash-lite"
+  },
   "mcpServers": {
     "demo": {
       "command": ".venv/bin/python",
