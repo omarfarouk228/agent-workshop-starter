@@ -12,7 +12,7 @@ Un agent Python construit avec [Google ADK](https://google.github.io/adk-docs/) 
 
 ## Installation (à faire avant le workshop)
 
-Prérequis : Python 3.11+, Git. Node 20+ est recommandé pour le module 3.
+La liste complète des outils à installer est dans [INSTALLATION.md](INSTALLATION.md). En résumé : Python 3.11+, Git, et Node 20+ pour le module 3.
 
 ```bash
 git clone https://github.com/omarfarouk228/agent-workshop-starter
@@ -95,6 +95,7 @@ demo_mcp_server.py  # les mêmes outils exposés en MCP
 .gemini/            # serveurs MCP pour Gemini CLI
 dart_mcp_server/    # les outils en Dart, exposés en MCP
 scripts/check_setup.py
+INSTALLATION.md   # ce qu'il faut installer
 EXERCICES.md      # la pratique, avec solutions
 ```
 
