@@ -96,7 +96,7 @@ demo_mcp_server.py  # les mêmes outils exposés en MCP
 dart_mcp_server/    # les outils en Dart, exposés en MCP
 scripts/check_setup.py
 INSTALLATION.md   # ce qu'il faut installer
-EXERCICES.md      # la pratique, avec solutions
+EXERCICES.md      # la pratique
 ```
 
 ## Exercices
