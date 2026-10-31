@@ -113,5 +113,5 @@ Voir [EXERCICES.md](EXERCICES.md).
 | `adk web` ne trouve pas l'agent | Lancez-le depuis la racine du repo, pas depuis `assistant_agent/` |
 | `No module named 'mcp.server.fastmcp'` | mcp 2.x a renommé `FastMCP` en `MCPServer` : `from mcp.server.mcpserver import MCPServer` |
 | Claude Code / Gemini CLI ne voient pas « demo » | Lancez-les depuis la racine du repo, venv créé dans `.venv` |
-| Gemini répond `429` | Quota gratuit atteint : attendez une minute ou utilisez une autre clé |
-| L'agent ne répond plus | Testez un autre modèle dans `agent.py` (`gemini-2.5-flash-lite`) |
+| Gemini répond `429` (`RESOURCE_EXHAUSTED`) | Quota gratuit atteint. Lisez le message : par minute, attendez une minute ; par jour, changez de modèle dans `agent.py` (`gemini-3.5-flash`) ou utilisez une autre clé. Vos quotas : https://aistudio.google.com/rate-limit |
+| L'agent ne répond plus, ou `MODEL_RETURNED_NO_CONTENT` | Testez l'autre modèle dans `agent.py` : `gemini-3.5-flash` (plus lent, plus fiable) |

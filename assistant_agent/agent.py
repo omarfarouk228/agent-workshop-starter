@@ -4,7 +4,7 @@ from .tools import get_weather, save_note, search_web
 
 root_agent = Agent(
     name="assistant_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3.5-flash-lite",
     description="Assistant personnel",
     instruction="Tu es un assistant utile. "
                 "Utilise tes outils quand c'est pertinent.",
