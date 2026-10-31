@@ -44,6 +44,8 @@ Demandez : *« Quelle météo à Kara ? »*. Regardez la réponse de l'outil : q
 
 Corrigez `get_weather` pour accepter un code pays optionnel. L'API de géocodage d'Open-Meteo accepte un paramètre `countryCode` (code ISO à 2 lettres, `TG` pour le Togo).
 
+Puis redemandez simplement *« Quelle météo à Kara ? »* : l'agent utilise-t-il votre nouveau paramètre ? Sinon, que lui manque-t-il pour savoir que vous êtes au Togo ?
+
 > 💡 Leçon : la docstring et les noms de paramètres **sont** le prompt de l'outil. Une docstring vague donne des appels vagues.
 
 ### 2.3 Bonus : un outil à vous
